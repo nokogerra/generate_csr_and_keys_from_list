@@ -1,0 +1,17 @@
+# code: language=ansible
+---
+- name: "Generate openssl configs, CSRs and keys from the list of FQRNs"
+  hosts: localhost
+  vars:
+    country: "RU"
+    state: "Moscow"
+    location: "Moscow"
+    organization: "The Ministry of Digital Development and Communications"
+    key_length: "2048"
+    common_names:
+      - "vasyan.nokogerra.lab"
+      - "kolyan.example.com"
+      - "taras.nokogerra.lab"
+      - "*.wildcard.com"
+  roles:
+    - generate_csr_and_key_from_list

@@ -1,0 +1,12 @@
+# code: language=ansible
+---
+country: "RU"
+state: "Moscow"
+location: "Moscow"
+organization: "The Ministry of Digital Development and Communications"
+key_length: "2048"
+common_names:
+  - "vasyan.nokogerra.lab"
+  - "kolyan.example.com"
+  - "taras.nokogerra.lab"
+  - "*.wildcard.com"
