@@ -1,0 +1,12 @@
+# code: language=ansible
+---
+galaxy_info:
+  author: "Anatoliy Kopylov"
+  description: "Simple role to generate a bunch of CSRs and keys from a list variable"
+  min_ansible_version: "2.14.3"
+  license: BSD
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy

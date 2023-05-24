@@ -1,0 +1,6 @@
+# code: language=ansible
+---
+- name: "Generate CSRs and keys based on the openssl configs"
+  command: openssl req -config /home/{{ ansible_user_id }}/csrs_and_keys/configs/{{ item.cn }}.conf \
+           -new -out /home/{{ ansible_user_id }}/csrs_and_keys/reqs/{{ item.cn }}.csr \
+           -newkey rsa:{{ key_length }} -nodes -keyout /home/{{ ansible_user_id }}/csrs_and_keys/keys/{{ item.cn }}.key

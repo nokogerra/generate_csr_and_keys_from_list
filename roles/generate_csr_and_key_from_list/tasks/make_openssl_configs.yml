@@ -1,0 +1,13 @@
+# code: language=ansible
+---
+- name: "Make openssl configs for single SAN CSRs"
+  ansible.builtin.template:
+    src: openssl_single_san.conf.j2
+    dest: /home/{{ ansible_user_id }}/csrs_and_keys/configs/{{ item.cn }}.conf
+  when: item.sans is not defined
+
+- name: "Make openssl configs for multiple SANs CSRs"
+  ansible.builtin.template:
+    src: openssl_multi_sans.conf.j2
+    dest: /home/{{ ansible_user_id }}/csrs_and_keys/configs/{{ item.cn }}.conf
+  when: item.sans is defined

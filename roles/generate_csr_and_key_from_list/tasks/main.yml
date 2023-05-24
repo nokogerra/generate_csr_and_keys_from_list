@@ -1,27 +1,12 @@
 # code: language=ansible
 ---
-- name: "Make reqs directory"
-  ansible.builtin.file:
-    path: /home/{{ ansible_user_id }}/csrs_and_keys/reqs
-    state: directory
-    mode: '0755'
-- name: "Make keys directory"
-  ansible.builtin.file:
-    path: /home/{{ ansible_user_id }}/csrs_and_keys/keys
-    state: directory
-    mode: '0755'
-- name: "Make openssl configs directory"
-  ansible.builtin.file:
-    path: /home/{{ ansible_user_id }}/csrs_and_keys/configs
-    state: directory
-    mode: '0755'
-- name: "Make openssl configs from the template"
-  ansible.builtin.template:
-    src: openssl.conf.j2
-    dest: /home/{{ ansible_user_id }}/csrs_and_keys/configs/{{ item }}.conf
+- name: "Make directory structure"
+  ansible.builtin.include_tasks: make_directory_structure.yml
+
+- name: "Make openssl configs"
+  ansible.builtin.include_tasks: make_openssl_configs.yml
   loop: "{{ common_names }}"
-- name: "Generate CSRs and keys based on the openssl configs"
-  command: openssl req -config /home/{{ ansible_user_id }}/csrs_and_keys/configs/{{ item }}.conf \
-           -new -out /home/{{ ansible_user_id }}/csrs_and_keys/reqs/{{ item }}.csr \
-           -newkey rsa:{{ key_length }} -nodes -keyout /home/{{ ansible_user_id }}/csrs_and_keys/keys/{{ item }}.key
+
+- name: "Generate CSRs and keys"
+  ansible.builtin.include_tasks: generate_csrs_and_keys.yml
   loop: "{{ common_names }}"

@@ -1,0 +1,19 @@
+# code: language=ansible
+---
+- name: "Make reqs directory"
+  ansible.builtin.file:
+    path: /home/{{ ansible_user_id }}/csrs_and_keys/reqs
+    state: directory
+    mode: '0755'
+
+- name: "Make keys directory"
+  ansible.builtin.file:
+    path: /home/{{ ansible_user_id }}/csrs_and_keys/keys
+    state: directory
+    mode: '0755'
+
+- name: "Make openssl configs directory"
+  ansible.builtin.file:
+    path: /home/{{ ansible_user_id }}/csrs_and_keys/configs
+    state: directory
+    mode: '0755'

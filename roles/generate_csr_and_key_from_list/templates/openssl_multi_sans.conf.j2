@@ -5,11 +5,13 @@ prompt = no
 C = {{ country }}
 ST = {{ state }}
 L = {{ location }}
-O = The Ministry of Digital Development and Communications
-CN = {{ item }}
+O = {{ organization }}
+CN = {{ item.cn }}
 [v3_req]
-keyUsage = digitalSignature, keyEncipherment
-extendedKeyUsage = serverAuth
+keyUsage = {{ key_usage }}
+extendedKeyUsage = {{ ext_key_usage }}
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = {{ item }}
+{% for i in item.sans -%}
+{{ i }}
+{% endfor %}

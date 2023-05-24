@@ -1,0 +1,15 @@
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+C = {{ country }}
+ST = {{ state }}
+L = {{ location }}
+O = {{ organization }}
+CN = {{ item.cn }}
+[v3_req]
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = {{ ext_key_usage }}
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = {{ item.cn }}

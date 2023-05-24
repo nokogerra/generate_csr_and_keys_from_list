@@ -3,15 +3,15 @@
 - name: "Generate openssl configs, CSRs and keys from the list of FQRNs"
   hosts: localhost
   vars:
-    country: "RU"
-    state: "Moscow"
-    location: "Moscow"
-    organization: "The Ministry of Digital Development and Communications"
-    key_length: "2048"
     common_names:
-      - "vasyan.nokogerra.lab"
-      - "kolyan.example.com"
-      - "taras.nokogerra.lab"
-      - "*.wildcard.com"
+      - cn: "vasyan.nokogerra.lab"
+      - cn: "*.wildcard.com"
+      - cn: taras.nokogerra.lab
+        sans:
+          - "DNS.1 = taras.nokogerra.lab"
+          - "DNS.2 = one.taras.nokogerra.lab"
+          - "DNS.3 = one.taras.nokogerra.lab"
+          - "IP.1 = 1.1.1.1"
+          - "IP.2 = 2.2.2.2"
   roles:
     - generate_csr_and_key_from_list
