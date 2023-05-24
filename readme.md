@@ -19,8 +19,8 @@ After that the role creates an openssl config for each item in a list. Here is a
 ```
 - In case of "vasyan.nokogerra.lab", it's gonna be used not only as a Common Name, but also as a SAN;
 - In case of "*.wildcard.com" - the same, but for a wildcard Name and SAN;
-- In case of "taras.nokogerra.lab", the name is used as a Common Name, and all the items in "sans" are used as SANs (**don't forget about "DNS.x and IP.x phrases"**).
-For the complete list of variables see defaults/main.yml.<br />
+- In case of "taras.nokogerra.lab", the name is used as a Common Name, and all the items in "sans" are used as SANs (**don't forget about "DNS.x and IP.x phrases"**).<br />
+For the complete list of variables see **defaults/main.yml**.<br />
 You can check your CSRs and keys like that:
 ```
 openssl req -in $HOME/csrs_and_keys/reqs/taras.nokogerra.lab.csr -text -noout
