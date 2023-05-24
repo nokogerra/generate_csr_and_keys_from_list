@@ -3,7 +3,7 @@ This simple role is intended to run on a localhost, so you don't need an invento
 It creates a directory structure for openssl configs, CSRs and keys:<br />
 - /home/ansible_user_id/csrs_and_keys/configs
 - /home/ansible_user_id/csrs_and_keys/reqs
-- /home/ansible_user_id/csrs_and_keys/keys
+- /home/ansible_user_id/csrs_and_keys/keys<br />
 After that the role creates an openssl config for each item in a list. Here is an example of the list:
 ```
     common_names:
